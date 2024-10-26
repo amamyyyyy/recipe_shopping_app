@@ -9,8 +9,7 @@ class Recipe < ApplicationRecord
   #   { name: "玉ねぎ", quantity: "1", unit: "個" },
   #   { name: "豚肉", quantity: "200", unit: "g" }
   # ]
-  serialize :ingredients, Array
-
+  
   # 買い物リストを取得するメソッド
   def shopping_list
     ingredients.map do |ingredient|
