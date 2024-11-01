@@ -1,0 +1,10 @@
+<div class="card">
+  <%= link_to image_tag("プロトタイプの画像", class: :card__img ), recipe_path(recipe.id)%>
+  <div class="card__body">
+    <%= link_to "プロトタイプのタイトル", recipe_path(recipe.id), class: :card__title%>
+    <p class="card__summary">
+      <%= "プロトタイプのキャッチコピー" %>
+    </p>
+    <%= link_to "by プロトタイプの投稿者名", recipe_path(recipe.user.id), class: :card__user %>
+  </div>
+</div>
