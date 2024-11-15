@@ -1,0 +1,60 @@
+<main class="main">
+  <div class="inner">
+    <div class="recipe__wrapper">
+      <p class="recipe__hedding">
+        <%= @recipe.title%>
+      </p>
+      <%= link_to @recipe.user.name, root_path, class: :recipe__user %>
+      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+        <div class="recipe__manage">
+          <%= link_to "編集する", root_path, class: :recipe__btn %>
+          <%= link_to "削除する", root_path, class: :recipe__btn %>
+        </div>
+      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+      <div class="recipe__image">
+        <%= image_tag @recipe.image %>
+      </div>
+      <div class="recipe__body">
+        <div class="recipe__detail">
+          <p class="detail__title">キャッチコピー</p>
+          <p class="detail__message">
+            <%= @recipe.description %>
+          </p>
+        </div>
+        <div class="recipe__detail">
+          <p class="detail__title">コンセプト</p>
+          <p class="detail__message">
+            <%= @recipe.serving_size %>
+          </p>
+        </div>
+        <div class="recipe__detail">
+          <p class="detail__title">コンセプト</p>
+          <p class="detail__message">
+            <%= @recipe.ingredients%>
+          </p>
+        </div>
+      </div>
+      <div class="prototype__comments">
+        <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+          <%# <%= form_with model: モデル名,local: true do |f|%>
+            <div class="field">
+              <%# <%= f.label :hoge, "コメント" %><br />
+              <%# <%= f.text_field :hoge, id:"comment_content" %>
+            </div>
+            <div class="actions">
+              <%# <%= f.submit "送信する", class: :form__btn  %>
+            </div>
+          <%# <% end %>
+        <%# // ログインしているユーザーには上記を表示する %>
+        <ul class="comments_lists">
+          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+            <li class="comments_list">
+              <%# <%= " コメントのテキスト "%>
+              <%# <%= link_to "（ ユーザー名 ）", root_path, class: :comment_user %>
+            </li>
+          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
