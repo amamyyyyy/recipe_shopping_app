@@ -5,6 +5,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :image, "プロトタイプの画像" %><br />
+    <%= f.file_field :image, id:"recipe_image" %>
+  </div>
+
+  <div class="field">
     <%= f.label :description, "作り方" %><br />
     <%= f.text_area :description, class: :form__text, id:"recipe_description" %>
   </div>
@@ -19,10 +24,7 @@
     <%= f.text_area :ingredients, class: :form__text, id:"recipe_ingredients" %>
   </div>
 
-  <div class="field">
-    <%= f.label :hoge, "プロトタイプの画像" %><br />
-    <%= f.file_field :hoge, id:"prototype_image" %>
-  </div>
+  
 
   <div class="actions">
     <%= f.submit "保存する", class: :form__btn  %>
