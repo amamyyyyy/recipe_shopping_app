@@ -11,10 +11,26 @@ class Recipe < ApplicationRecord
   #   { name: "豚肉", quantity: "200", unit: "g" }
   # ]
   
-  # 買い物リストを取得するメソッド
+
   def shopping_list
-    ingredients.map do |ingredient|
-      "#{ingredient[:name]} #{ingredient[:quantity]}#{ingredient[:unit]}"
+    # テキストから材料リストを生成
+    ingredients.to_s.split("\n").map do |ingredient|
+      # 材料の形式を解析（例：「100g 卵」や「卵 2個」など）
+      parts = ingredient.split(/\s+/)
+      
+      if parts.length > 1 && parts.first.match?(/^\d+\.?\d*/)
+        {
+          name: parts[1..-1].join(' '),
+          quantity: parts.first,
+          unit: parts.length > 2 ? parts[2] : ''
+        }
+      else
+        {
+          name: ingredient,
+          quantity: '1',
+          unit: ''
+        }
+      end
     end
   end
 end

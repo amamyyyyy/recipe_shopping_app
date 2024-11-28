@@ -39,6 +39,14 @@ class RecipesController < ApplicationController
     redirect_to recipes_url, notice: 'レシピが削除されました'
   end
 
+  def shopping_list
+    # ユーザーのすべてのレシピの材料を集める
+    @shopping_list = current_user.recipes.flat_map(&:shopping_list)
+    
+    # 材料を集約（同じ材料は合算）
+    @consolidated_list = consolidate_shopping_list(@shopping_list)
+  end
+
   private
 
   def recipe_params
@@ -49,5 +57,23 @@ class RecipesController < ApplicationController
       :serving_size,
       :ingredients
     ).merge(user_id: current_user.id)
+  end
+
+  def consolidate_shopping_list(list)
+    # 同じ材料を集約するメソッド
+    list.group_by { |item| item[:name] }
+        .transform_values do |items|
+          {
+            name: items.first[:name],
+            total_quantity: items.sum { |item| parse_quantity(item[:quantity]) },
+            unit: items.first[:unit]
+          }
+        end
+        .values
+  end
+
+  def parse_quantity(quantity)
+    # 文字列の数量を数値に変換（簡易的な実装）
+    quantity.to_f
   end
 end

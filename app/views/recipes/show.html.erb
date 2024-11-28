@@ -7,8 +7,8 @@
       <%= link_to @recipe.user.name, root_path, class: :recipe__user %>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
         <div class="recipe__manage">
-          <%= link_to "編集する", root_path, class: :recipe__btn %>
-          <%= link_to "削除する", root_path, class: :recipe__btn %>
+          <%= link_to "編集する", edit_recipe_path(@recipe), class: :recipe__btn %>
+          <%= link_to "削除する", recipe_path(@recipe), data: { turbo_method: :delete }, class: :recipe__btn %>
         </div>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
       <div class="recipe__image">
@@ -16,19 +16,19 @@
       </div>
       <div class="recipe__body">
         <div class="recipe__detail">
-          <p class="detail__title">キャッチコピー</p>
+          <p class="detail__title">作り方</p>
           <p class="detail__message">
             <%= @recipe.description %>
           </p>
         </div>
         <div class="recipe__detail">
-          <p class="detail__title">コンセプト</p>
+          <p class="detail__title">仕上がり</p>
           <p class="detail__message">
             <%= @recipe.serving_size %>
           </p>
         </div>
         <div class="recipe__detail">
-          <p class="detail__title">コンセプト</p>
+          <p class="detail__title">材料</p>
           <p class="detail__message">
             <%= @recipe.ingredients%>
           </p>
