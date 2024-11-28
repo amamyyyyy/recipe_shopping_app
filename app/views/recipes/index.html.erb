@@ -5,6 +5,7 @@
       <div class="greeting"> 
         <%= "こんにちは、" %>
         <%= link_to "#{current_user.name}さん", root_path, class: :greeting__link%>
+        <%= link_to '買い物リスト', shopping_list_recipes_path, class: 'btn btn-primary' %>
       </div>
     <%# // ログインしているときは上記を表示する %>
     <% end %>

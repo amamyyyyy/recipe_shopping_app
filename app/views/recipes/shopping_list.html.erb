@@ -1,0 +1,25 @@
+<div class="shopping-list">
+  <h1>買い物リスト</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>材料</th>
+        <th>数量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @consolidated_list.each do |item| %>
+        <tr>
+          <td><%= item[:name] %></td>
+          <td>
+            <%= item[:total_quantity] %>
+            <%= item[:unit] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'レシピ一覧に戻る', recipes_path %>
+</div>
