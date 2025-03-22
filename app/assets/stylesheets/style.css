@@ -330,3 +330,125 @@ a {
   text-decoration: none;
   border-radius: 5px;
 }
+
+.shopping-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Shopping list title */
+.shopping-list h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+/* Table styling */
+.shopping-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+/* Table header */
+.shopping-list thead {
+  background-color: #f5f5f5;
+}
+
+.shopping-list th {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+}
+
+/* Table rows */
+.shopping-list tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.shopping-list tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.shopping-list tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Table cells */
+.shopping-list td {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+/* Quantity column */
+.shopping-list td:last-child {
+  text-align: right;
+  font-weight: 500;
+  color: #555;
+  width: 30%;
+}
+
+/* Back link styling */
+.shopping-list a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.shopping-list a:hover {
+  background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .shopping-list {
+    padding: 15px 10px;
+  }
+  
+  .shopping-list h1 {
+    font-size: 24px;
+  }
+  
+  .shopping-list th,
+  .shopping-list td {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Print styling */
+@media print {
+  .shopping-list {
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .shopping-list a {
+    display: none;
+  }
+  
+  .shopping-list table {
+    border: 1px solid #ddd;
+  }
+  
+  .shopping-list td,
+  .shopping-list th {
+    border: 1px solid #ddd;
+  }
+}
